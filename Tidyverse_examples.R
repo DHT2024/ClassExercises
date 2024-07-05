@@ -60,5 +60,12 @@ newdata <- newdata %>%
   # ungroup so that biuckets are destroyed
   ungroup()
 
+# Selecting columns and renaming
+newdata %>%
+  select(Treatment,
+         Type,
+         Plant,
+         MagicNumber=StdDev)
+  
 
   
