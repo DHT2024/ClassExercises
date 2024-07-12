@@ -6,7 +6,7 @@ library("dplyr")
 library('tidyr')
 
 # Load weather.rds
-weather <- readRDS("../../DHT24-Practice/weather.rds")
+weather <- readRDS("../weather.rds")
 
 # Verify that weather is a data.frame
 class(weather)
@@ -80,4 +80,6 @@ w6 <- w5 %>%
 
 
 # Convert character columns into numeric
-w7 <- mutate_each(w6, funs(as.numeric), Max.TemperatureF:CloudCover)
+w7 <- mutate_each(w6, 
+                  funs(as.numeric), 
+                  Max.TemperatureF:CloudCover)
