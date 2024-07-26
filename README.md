@@ -1,5 +1,6 @@
 # ClassExercises
 class exercises
 This is an addition done in test-pr branch
-New line added on main but not conflict-test
+Different text here
 # Do not be alarmed!
+Alarm! Conflict happened!!
