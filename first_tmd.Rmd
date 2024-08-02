@@ -19,13 +19,16 @@ When you click the **Knit** button a document will be generated that includes bo
 summary(cars)
 ```
 
+# Extra!
+
 You can also put in **inline commands** such as this one where we calcu;ate the average speed using `mean(cars$speed, na.rm=T)` 
 
 Average speed is calculated as `r mean(cars$speed, na.rm=T)` in this dataset.
 
-Cars dataframe **as-is**
+Cars dataframe *as-is*
 ```{r cars_asis, results='asis'}
 cars
+# Extra!
 ```
 
 Cars dataframe as **markup**
@@ -49,3 +52,16 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Additional info
+
+This additional info is entered as a pipe-table. It does not live in a dataframe and is really not worth to put into one. 
+
+| Plant | Temp. | Growth |
+|:------|:-----:|-------:|
+| A     | 20    | 0.65   |
+| B     | 20    | 0.95   |
+| C     | 20    | 0.15   |
+
+
+*Simple!*
