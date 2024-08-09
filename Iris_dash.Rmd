@@ -1,0 +1,32 @@
+---
+title: "Old Faithful Iris"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Row {data-height=100}
+-----------------------------------------------------------------------
+Iris is a flowering plant genus of 310 accepted species with showy flowers. As well as being the scientific name, iris is also widely used as a common name for all Iris species, as well as some belonging to other closely related genera.
+
+
+Row {data-height=350}
+-----------------------------------------------------------------------
+
+Here is where my plots go
+
+### Chart B
+
+```{r}
+
+```
+
+Row {data-height=350}
+-------------------------------------
+
+Here is where my EDA table goes
