@@ -19,7 +19,7 @@ value <- 12
 valueBox(value, caption = "kudos", color = "#dff4e2", icon = "fa-solid fa-moon")
 ```
 
-### new item
+### Our current status
 
 ``` {r}
 gvalue <- 40
