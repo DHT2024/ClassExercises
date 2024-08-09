@@ -4,6 +4,21 @@ output:
   flexdashboard::flex_dashboard:
     orientation: rows
 ---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+Row {data-height=100}
+-------------------------------------
+
+### Sample Values
+
+``` {r valubox}
+value <- 12
+valueBox(value, caption = "kudos", color = "#dff4e2", icon = "fa-solid fa-moon")
+```
+
 Row {data-height=650}
 -------------------------------------
     
