@@ -8,7 +8,23 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
+library(dplyr)
+library(ggplot2)
 ```
+
+```{r read-data, echo=FALSE}
+df <- iris
+no_species <- df %>%
+  select(Species) %>%
+  unique() %>%
+# Count() returns a df and I want an integer. So I use nrow()
+  nrow()
+```
+
+Row {data-height=100}
+-----------------------------------------------------------------------
+
+This is where value boxes etc go
 
 Row {data-height=100}
 -----------------------------------------------------------------------
