@@ -23,8 +23,30 @@ no_species <- df %>%
 
 Row {data-height=100}
 -----------------------------------------------------------------------
+### Sample size
 
-This is where value boxes etc go
+```{r valueboxes_size}
+valueBox(nrow(df), caption = "Specimens measured", color = "orchid", icon = "ion-ios-flower")
+```
+
+### Species
+
+```{r valueboxes_spec}
+valueBox(no_species, caption = "Species collected", color = "orchid", icon = "fa-solid fa-heart")
+```
+
+### Our current status
+
+``` {r}
+gvalue <- 40
+gauge(gvalue, min=0, max=100, 
+      symbol = "Points", 
+      gaugeSectors(success = c(80,100),
+                   warning = c(51,79), 
+                   danger = c(0,50)
+                   )
+      )
+```
 
 Row {data-height=100}
 -----------------------------------------------------------------------
