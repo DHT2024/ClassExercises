@@ -1,0 +1,73 @@
+---
+title: "Good old Iris"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(dplyr)
+# Read in data
+data("iris")
+```
+
+## Row {data-height=100}
+Iris is a flowering plant genus of 310 accepted species with showy flowers. As well as being the scientific name, iris is also widely used as a common name for all Iris species, as well as some belonging to other closely related genera.
+
+## Row {data-height=300}
+### Sample Size
+
+```{r}
+valueBox(value=nrow(iris),
+         caption = "irises samples",
+         icon = "fa-solid fa-snowflake",
+         color = "pink")
+```
+
+### Short Irises
+
+```{r}
+short_setosa <- iris %>%
+  filter(Petal.Length < mean(Petal.Length)) %>%
+  nrow()
+gauge(short_setosa, min=0, max=nrow(iris), symbol = "irises", 
+      gaugeSectors(success = c(101,150), 
+                   warning = c(51,100), 
+                   danger = c(1,50)))
+```
+
+### Tall Irises
+
+```{r}
+short_setosa <- iris %>%
+  filter(Petal.Length > mean(Petal.Length)) %>%
+  nrow()
+gauge(short_setosa, min=0, max=nrow(iris), symbol = "irises", 
+      gaugeSectors(success = c(101,150), 
+                   warning = c(51,100), 
+                   danger = c(1,50)))
+```
+
+## Row {data-height=700}
+
+### Species by Petal & Sepal values 
+
+```{r}
+ggplot(iris, aes(x=Petal.Length, y=Sepal.Width)) +
+  geom_point(aes(color=Species))
+```
+
+### Sepal and petal averages
+
+Below are the average Petal lengths and sepal widths for each iris species. 
+
+```{r}
+iris %>%
+  group_by(Species) %>%
+  summarise(Avg_SepalWidth = mean(Sepal.Width, na.rm = T),
+            Avg_PetalLength = mean(Petal.Length, na.rm = T)) %>%
+  knitr::kable()
+```
+
