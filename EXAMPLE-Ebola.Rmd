@@ -1,0 +1,64 @@
+---
+title: "Ebola Outbreak"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    horizontal_layout: fill
+    source_code: embed
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(dplyr)
+library(ggplot2)
+library(plotly)
+
+# Load my dataset
+ebola <- readRDS("datasets/ebola_cleaned.rds")
+```
+
+# Sidebar {.sidebar}
+You can also convert a page or a column into a “sidebar” on the left side of the dashboard by adding the {.sidebar} attribute. It can hold text (viewable from any page), or if you have integrated shiny interactivity it can be useful to hold user-input controls such as sliders or drop-down menus.
+
+# Overview
+
+This dashboard is produced for the leadership of Wakama County.
+It aims to advise them on the status of the Ebola outbreak.
+
+
+**There are `r format(nrow(ebola),big.mark=",", big.interval=3)` cases reported as hospitalized, as of `r max(ebola$date_hospitalisation, na.rm = T)`**
+
+### Summary Data
+
+#### Hospitalizations
+
+``` {r hospital_data}
+ebola %>%
+  group_by(Hospital = hospital) %>%
+  summarise(Cases = n()) %>%
+  knitr::kable()
+```
+
+# Basic Stats
+
+## Infections by Age {data-width=350}
+```{r infect_age}
+g <- ggplot(ebola, aes(age_cat)) +
+  geom_bar(aes(fill=outcome)) 
+  plotly::ggplotly(g)
+```
+
+
+## Epicurve {data-width=350}
+
+```{r epicurve}
+ggplot(ebola, aes(date_infection)) +
+  geom_bar(aes(fill=gender))
+```
+
+# Health Indicators {data-navmenu="Indicators"}
+Health Indicators
+
+# Economic Indicators {data-navmenu="Indicators"}
+Economic Indicators
